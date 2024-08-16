@@ -4,6 +4,8 @@
 
 Script ultra-simple pour configurer une structure de projet Python en quelques secondes.
 
+---
+
 ## 🎶 Utilisation
 
 1. **Lancez le script** :
