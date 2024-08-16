@@ -90,6 +90,9 @@ Description de votre projet.
 """
         self.create_file(self.base_path / "README.md", readme_content)
 
+        # Création de requirements.txt
+        self.create_file(self.base_path / "requirements.txt")
+
     def init_git(self):
         try:
             subprocess.run(["git", "init"], cwd=self.base_path, check=True)
