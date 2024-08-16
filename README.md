@@ -2,43 +2,22 @@
 
 # ![ThematrixreloadedNeoGIF](https://github.com/user-attachments/assets/4df80063-238e-4ce2-9468-13a55bb323f8)
 
-Un script simple pour configurer rapidement une structure de projet Python.
+Script ultra-simple pour configurer une structure de projet Python en quelques secondes.
 
-## 🥱 Qu'est-ce que c'est ?
+## 🎶 Utilisation
 
-Ce script crée automatiquement :
+1. **Lancez le script** :
 
-- Un dossier de projet avec un fichier `main.py`
-- Un dépôt Git (optionnel)
-- Un environnement virtuel Python (optionnel)
-- Des fichiers utiles (`.gitignore`, `go.ps1`, `README.md`)
-
-## 📦 Comment l'utiliser ?
-
-1. **Exécutez le script :**
-
-   - Mode interactif
-
-    Double clique sur go.py, ou :
+   - Double clique ou :
      ```bash
      python go.py
      ```
 
-   - Avec des options en ligne de commande
+   - Ligne de commande :
      ```bash
-     python go.py [nom_du_projet] --init-git --create-venv
+     python go.py [nom_du_projet] --init-git --no-venv
      ```
 
-2. **Installez les dépendances** (si nécessaires) :
-
+2. **Installez les dépendances** :
    ```powershell
    .\go.ps1
-   ```
-
-3. **Démarrez le développement** :
-
-   - Modifiez `main.py` pour votre projet
-   - Exécutez le script :
-     ```bash
-     python main.py
-     ```
