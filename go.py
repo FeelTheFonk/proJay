@@ -22,9 +22,7 @@ class ProjectGenerator:
 
         self.create_main_py()
         self.create_additional_files()
-
-        if self.options.get('create_venv', True):
-            self.create_venv()
+        self.create_venv()  # Venv est maintenant toujours créé
         
         if self.options.get('init_git', False):
             self.init_git()
@@ -122,9 +120,8 @@ def interactive_mode():
         project_name = input("Le nom du projet ne peut pas être vide. Réessayez : ").strip()
 
     init_git = input("Initialiser un dépôt Git ? (o/N) : ").lower().startswith('o')
-    create_venv = input("Créer un environnement virtuel ? (O/n) : ").lower().startswith('o')
 
-    return project_name, {"init_git": init_git, "create_venv": create_venv}
+    return project_name, {"init_git": init_git}
 
 def main():
     if len(sys.argv) == 1:
@@ -133,11 +130,10 @@ def main():
         parser = argparse.ArgumentParser(description="Générateur de structure de projet Python")
         parser.add_argument("project_name", help="Nom du projet à créer")
         parser.add_argument("--init-git", action="store_true", help="Initialiser un dépôt Git")
-        parser.add_argument("--no-venv", action="store_false", help="Ne pas créer d'environnement virtuel")
         args = parser.parse_args()
 
         project_name = args.project_name
-        options = {"init_git": args.init_git, "create_venv": args.no_venv}
+        options = {"init_git": args.init_git}
 
     generator = ProjectGenerator(project_name, options)
     generator.generate_structure()
