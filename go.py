@@ -22,13 +22,13 @@ class ProjectGenerator:
 
         self.create_main_py()
         self.create_additional_files()
+
+        if self.options.get('create_venv', True):
+            self.create_venv()
         
         if self.options.get('init_git', False):
             self.init_git()
-        
-        if self.options.get('create_venv', False):
-            self.create_venv()
-
+                    
         print(f"Projet '{self.project_name}' créé avec succès.")
 
     def create_main_py(self):
@@ -122,7 +122,7 @@ def interactive_mode():
         project_name = input("Le nom du projet ne peut pas être vide. Réessayez : ").strip()
 
     init_git = input("Initialiser un dépôt Git ? (o/N) : ").lower().startswith('o')
-    create_venv = input("Créer un environnement virtuel ? (o/N) : ").lower().startswith('o')
+    create_venv = input("Créer un environnement virtuel ? (O/n) : ").lower().startswith('o')
 
     return project_name, {"init_git": init_git, "create_venv": create_venv}
 
@@ -133,17 +133,17 @@ def main():
         parser = argparse.ArgumentParser(description="Générateur de structure de projet Python")
         parser.add_argument("project_name", help="Nom du projet à créer")
         parser.add_argument("--init-git", action="store_true", help="Initialiser un dépôt Git")
-        parser.add_argument("--create-venv", action="store_true", help="Créer un environnement virtuel")
+        parser.add_argument("--no-venv", action="store_false", help="Ne pas créer d'environnement virtuel")
         args = parser.parse_args()
 
         project_name = args.project_name
-        options = {"init_git": args.init_git, "create_venv": args.create_venv}
+        options = {"init_git": args.init_git, "create_venv": args.no_venv}
 
     generator = ProjectGenerator(project_name, options)
     generator.generate_structure()
 
     print("\nActions post-création :")
-    print("1. Ajoutes vos dépendances au 'requirements.txt' et exécutez 'go.ps1' pour installer les dépendances.")
+    print("1. Ajoutez vos dépendances au 'requirements.txt' et exécutez 'go.ps1' pour installer les dépendances.")
     print("2. Commencez à coder votre projet dans main.py!")
     
     input("\nAppuyez sur Entrée pour quitter...")
