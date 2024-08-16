@@ -22,7 +22,7 @@ class ProjectGenerator:
 
         self.create_main_py()
         self.create_additional_files()
-        self.create_venv()  # Venv est maintenant toujours créé
+        self.create_venv()
         
         if self.options.get('init_git', False):
             self.init_git()
@@ -87,14 +87,6 @@ Description de votre projet.
 
 1. Activez l'environnement virtuel
 2. Exécutez `python main.py`
-
-## Tests
-
-Exécutez `python -m unittest discover tests` pour lancer les tests.
-
-## Licence
-
-Spécifiez votre licence ici.
 """
         self.create_file(self.base_path / "README.md", readme_content)
 
