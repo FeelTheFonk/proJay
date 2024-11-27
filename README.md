@@ -7,9 +7,9 @@ A lightweight, universal Python project structure generator that sets up fast.
 ## 🕶 Features
 
 - Creates a basic Python project structure
-- Optional virtual environment creation
+- Virtual environment creation
 - Optional Git repository initialization
-- Generates essential files (main.py, setup.py, .gitignore, README.md)
+- Generates essential files (`main.py`, `go.sh` or `go.ps1`, `.gitignore`, `README.md`, `requirements.txt`)
 
 ## 💊 Quick Start
 
@@ -21,18 +21,17 @@ A lightweight, universal Python project structure generator that sets up fast.
 ## 🔴 Usage
 
 ```
-python go.py [-h] [--init-git] [--no-venv] [project_name]
+python go.py [--init-git] [project_name]
 ```
 
 Arguments:
 - `project_name`: Name of the project to create (optional, will prompt if not provided)
 - `--init-git`: Initialize a Git repository
-- `--no-venv`: Don't create a virtual environment
 
 ## 📂 Generated Project Structure
 
 - `main.py`: Entry point of the application
-- `setup.py`: Script to set up the project environment
+- `go.sh` or `go.ps1`: Script to set up the project environment and run the application
 - `requirements.txt`: List of project dependencies
 - `.gitignore`: Specifies intentionally untracked files to ignore
 - `README.md`: Project information and documentation
@@ -42,16 +41,22 @@ Arguments:
 1. Navigate to your generated project folder.
 
 2. Activate the virtual environment:
-   - On Windows: `venv\Scripts\activate`
-   - On macOS and Linux: `source venv/bin/activate`
+   - On **Windows**:
+     ```powershell
+     venv\Scripts\activate
+     ```
+   - On **macOS** and **Linux**:
+     ```bash
+     source venv/bin/activate
+     ```
 
 3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-4. Start coding your Python project!
-
 ---
 
 🔵 Happy coding! 🔴
+
+---
