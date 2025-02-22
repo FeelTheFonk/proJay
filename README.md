@@ -24,9 +24,9 @@ A lightning-fast Python project generator with perfect GitHub workflows. Zero co
 ## 💊 Quick Start
 
 ```bash
-python proJay.py your_project_name
+python go.py your_project_name
 # or
-python proJay.py your_project_name --init-git
+python go.py your_project_name --init-git
 ```
 
 ## 🔴 Generated Structure

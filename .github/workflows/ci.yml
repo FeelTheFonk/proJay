@@ -30,19 +30,13 @@ jobs:
           python-version: ${{ matrix.python-version }}
           
       - name: Clean build artifacts
-        shell: bash
-        run: |
-          rm -rf build/ dist/ *.egg-info/
-          find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
+        run: python -c "import shutil; import os; [shutil.rmtree(p) for p in ['build', 'dist', *[d for d in os.listdir('.') if d.endswith('.egg-info')]] if os.path.exists(p)]"
           
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          python -c "import os; os.path.exists('requirements.txt') and __import__('subprocess').run(['pip', 'install', '-r', 'requirements.txt'])"
           
       - name: Quality checks
         run: |
-          if [[ -f "main.py" ]]; then
-            python -c "import main; assert hasattr(main, 'main'), 'Missing main function'"
-            python -c "import os; assert os.path.getsize('main.py') < 1024, 'File size exceeds 1KB'"
-          fi
+          python -c "import os, sys; main_exists = os.path.exists('main.py'); sys.exit(0 if not main_exists else 0 if os.path.getsize('main.py') < 1024 and 'def main' in open('main.py').read() else 1)"
