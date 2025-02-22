@@ -289,6 +289,8 @@ setup(
     version="0.1.0",
     py_modules=["{project_name}"],
     description="Generated with proJay",
+    long_description=open('README.md').read(),
+    long_description_content_type="text/markdown",        
     author="",
     author_email="",
     url="",
