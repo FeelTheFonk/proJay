@@ -21,7 +21,7 @@ jobs:
       - name: Validate tag version
         run: |
           TAG=${GITHUB_REF#refs/tags/v}
-          grep "version="${TAG}"" setup.py || (echo "Version mismatch between tag and setup.py" && exit 1)
+          grep "version=\"$TAG\"" setup.py || (echo "Version mismatch between tag and setup.py" && exit 1)
       
       - name: Set up Python
         uses: actions/setup-python@v5
