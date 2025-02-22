@@ -24,9 +24,11 @@ A lightning-fast Python project generator with perfect GitHub workflows. Zero co
 ## 💊 Quick Start
 
 ```bash
-python go.py your_project_name
+python -m go your_project_name
+
 # or
-python go.py your_project_name --init-git
+
+python -m go your_project_name --init-git
 ```
 
 ## 🔴 Generated Structure
