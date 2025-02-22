@@ -24,6 +24,10 @@ A lightning-fast Python project generator with perfect GitHub workflows. Zero co
 ## 💊 Quick Start
 
 ```bash
+pip install proJay
+```
+
+```bash
 python -m go your_project_name
 
 # or
@@ -87,7 +91,7 @@ your_project/
 
 ```bash
 # Generate project
-python proJay.py my_project --init-git
+python -m go my_project --init-git
 
 # Setup environment
 cd my_project
