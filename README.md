@@ -20,6 +20,7 @@ A lightning-fast Python project generator with perfect GitHub workflows. Zero co
 - **GitHub Power**: CI/CD, Release automation, Branch protection
 - **PyPI Ready**: Configured for instant publishing
 - **Cross-Platform**: Windows & Unix support with dedicated scripts
+- **Optimized Build**: Automatic source minification during the release process to reduce package size without impacting runtime
 
 ## 💊 Quick Start
 
@@ -29,11 +30,9 @@ pip install proJay
 
 ```bash
 python -m go your_project_name
-
-# or
-
-python -m go your_project_name --init-git
 ```
+
+---
 
 ## 🔴 Generated Structure
 
@@ -43,18 +42,18 @@ your_project/
 │   ├── ISSUE_TEMPLATE/
 │   │   └── bug_report.yml     # Bug report template
 │   ├── workflows/
-│   │   ├── ci.yml            # Multi-OS CI pipeline
-│   │   └── release.yml       # Automated PyPI releases
-│   ├── dependabot.yml        # Daily updates
+│   │   ├── ci.yml             # Multi-OS CI pipeline
+│   │   └── release.yml        # Automated PyPI releases with minification
+│   ├── dependabot.yml         # Daily updates
 │   ├── pull_request_template.md  # PR template
-│   └── settings.yml          # Branch protection
-├── main.py                   # Entry point
-├── setup.py                  # PyPI configuration
-├── requirements.txt          # Dependencies
-├── go.ps1/go.sh             # Setup scripts
-├── LICENSE                   # MIT License
-├── README.md                # Documentation
-└── .gitignore               # Clean workspace
+│   └── settings.yml           # Branch protection
+├── main.py                    # Entry point
+├── setup.py                   # PyPI configuration
+├── requirements.txt           # Dependencies
+├── go.ps1/go.sh              # Setup scripts
+├── LICENSE                    # MIT License
+├── README.md                  # Documentation
+└── .gitignore                 # Clean workspace
 ```
 
 ## 🌐 Scripts & Automation
@@ -62,16 +61,15 @@ your_project/
 - **Setup Scripts**
   - Windows: `go.ps1`
   - Unix: `go.sh`
-  - Automatic venv creation
+  - Automatic virtual environment creation
   - Dependencies installation
   - Environment activation
 
 - **CI Pipeline**
-  - Multi-OS testing (Windows, Linux, MacOS)
+  - Multi-OS testing (Windows, Linux, macOS)
   - Python 3.8 to 3.13 support
   - Dependencies verification
-  - Quality checks
-  - Clean build verification
+  - Quality checks and clean build verification
 
 - **DependaBot**
   - Daily pip updates
@@ -82,10 +80,10 @@ your_project/
 
 - **Release Pipeline**
   - Version validation
+  - Code minification (appliquée automatiquement lors du build pour optimiser le code source)
   - Package size checks
   - PyPI publishing
-  - GitHub release creation
-  - Release notes generation
+  - GitHub release creation with auto-generated release notes
 
 ## 📂 Project Usage
 
@@ -113,7 +111,7 @@ git push origin v0.1.0
 
 1. Clone your generated project
 2. Run the setup script (`go.ps1` or `go.sh`)
-3. Activate virtual environment:
+3. Activate the virtual environment:
    - Windows: `venv\Scripts\activate`
    - Unix: `source venv/bin/activate`
 4. Install dependencies: `pip install -r requirements.txt`
@@ -124,23 +122,24 @@ git push origin v0.1.0
 Automatic checks on every push:
 - Cross-platform compatibility
 - Python version compatibility
-- Code quality
-- Build verification
-- Size limits
+- Code quality analysis
+- Build verification and clean workspace checks
+- Package size limits
 
 ## 🚀 Release Process
 
 1. Update version in `setup.py`
 2. Create and push tag
-3. Automatic:
+3. Automatic steps:
+   - **Code Minification**: The source code is minified during the release build process (this step optimise le code pour réduire la taille sans impacter l'exécution)
    - Package building
    - Version validation
    - Size verification
    - PyPI publishing
-   - GitHub release
+   - GitHub release creation with auto-generated release notes
 
 ---
-🔵 46 6F 6C 6C 6F 77 20 74 68 65 20 77 68 69 74 65 20 72 61 62 62 69 74 🐇
+### 🔵 46 6F 6C 6C 6F 77 20 74 68 65 20 77 68 69 74 65 20 72 61 62 62 69 74 🐇
 ---
 
 <div align="center">

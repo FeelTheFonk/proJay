@@ -21,21 +21,31 @@ jobs:
       - name: Validate tag version
         run: |
           TAG=${GITHUB_REF#refs/tags/v}
-          grep "version=\"$TAG\"" setup.py || (echo "Version mismatch between tag and setup.py" && exit 1)
+          grep "version="${TAG}"" setup.py || (echo "Version mismatch between tag and setup.py" && exit 1)
       
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       
-      - name: Install build tools
+      - name: Install build tools and minifier
         run: |
           python -m pip install --upgrade pip
-          pip install build
+          pip install build python-minifier
+      
+      - name: Minify Python source code
+        run: |
+          # Exemple : minifier le fichier go.py
+          if [ -f "go.py" ]; then
+            echo "Minification de go.py..."
+            python -m python_minifier go.py > go.min.py && mv go.min.py go.py
+          else
+            echo "go.py non trouvé, minification ignorée."
+          fi
       
       - name: Verify clean directory
         run: |
-          if [ -d "dist" ] || [ -d "build" ] || [ -d "*.egg-info" ]; then
+          if [ -d "dist" ] || [ -d "build" ] || ls *.egg-info 1> /dev/null 2>&1; then
             echo "Build directories should not exist"
             exit 1
           fi

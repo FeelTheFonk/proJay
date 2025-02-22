@@ -69,21 +69,31 @@ jobs:
       - name: Validate tag version
         run: |
           TAG=${GITHUB_REF#refs/tags/v}
-          grep "version=\\"$TAG\\"" setup.py || (echo "Version mismatch between tag and setup.py" && exit 1)
+          grep "version=\"${TAG}\"" setup.py || (echo "Version mismatch between tag and setup.py" && exit 1)
       
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       
-      - name: Install build tools
+      - name: Install build tools and minifier
         run: |
           python -m pip install --upgrade pip
-          pip install build
+          pip install build python-minifier
+      
+      - name: Minify Python source code
+        run: |
+          # Exemple : minifier le fichier main.py
+          if [ -f "main.py" ]; then
+            echo "Minification de main.py..."
+            python -m python_minifier main.py > main.min.py && mv main.min.py main.py
+          else
+            echo "main.py non trouvé, minification ignorée."
+          fi
       
       - name: Verify clean directory
         run: |
-          if [ -d "dist" ] || [ -d "build" ] || [ -d "*.egg-info" ]; then
+          if [ -d "dist" ] || [ -d "build" ] || ls *.egg-info 1> /dev/null 2>&1; then
             echo "Build directories should not exist"
             exit 1
           fi
@@ -102,7 +112,8 @@ jobs:
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          verbose: true""",
+          verbose: true
+""",
 
     "dependabot.yml": """version: 2
 updates:
