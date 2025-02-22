@@ -131,7 +131,7 @@ Automatic checks on every push:
 1. Update version in `setup.py`
 2. Create and push tag
 3. Automatic steps:
-   - **Code Minification**: The source code is minified during the release build process (this step optimise le code pour réduire la taille sans impacter l'exécution)
+   - **Code Minification**: The source code is minified during the release build process
    - Package building
    - Version validation
    - Size verification

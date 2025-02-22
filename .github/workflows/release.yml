@@ -35,12 +35,11 @@ jobs:
       
       - name: Minify Python source code
         run: |
-          # Exemple : minifier le fichier go.py
-          if [ -f "go.py" ]; then
-            echo "Minification de go.py..."
-            python -m python_minifier go.py > go.min.py && mv go.min.py go.py
+          if [ -f "main.py" ]; then
+            echo "Minification..."
+            python -m python_minifier main.py > main.min.py && mv main.min.py main.py
           else
-            echo "go.py non trouvé, minification ignorée."
+            echo "main.py not found, passing."
           fi
       
       - name: Verify clean directory
