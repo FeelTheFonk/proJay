@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="proJay",
-    version="1.1.0",
+    version="1.1.1",
     py_modules=["go"],
     description="A lightning-fast Python project generator with perfect GitHub workflows. Zero config, instant setup.",
     long_description=open('README.md').read(),
