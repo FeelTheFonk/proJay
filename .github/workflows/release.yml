@@ -14,7 +14,7 @@ jobs:
       id-token: write
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
       
@@ -24,7 +24,7 @@ jobs:
           grep "version=\"${TAG}\"" setup.py || { echo "Version mismatch between tag and setup.py"; exit 1; }
       
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       
